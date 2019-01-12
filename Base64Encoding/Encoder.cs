@@ -11,7 +11,7 @@ namespace Base64Encoding
             var asBinary = string.Join("", text.Select(c => Convert.ToString(c, 2).PadLeft(8, '0')));
 
             var result = "";
-            foreach (var block in ThreeOctlets(asBinary))
+            foreach (var block in ThreeOctets(asBinary))
             {
                 switch (block.Length)
                 {
@@ -48,7 +48,7 @@ namespace Base64Encoding
                 return Lookup(Convert.ToByte(block.Substring(blockStart, 6), 2)).ToString();
         }
 
-        private IEnumerable<string> ThreeOctlets(string binaryText)
+        private IEnumerable<string> ThreeOctets(string binaryText)
         {
             var offset = 0;
             while (offset < binaryText.Length)
